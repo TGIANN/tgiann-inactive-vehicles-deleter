@@ -18,12 +18,8 @@ CreateThread(function()
             if not lastDrive or GetPedInVehicleSeat(vehicle, -1) ~= 0 then
                 entity.state:set('lastDrive', osTime + config.second, false)
             elseif osTime > lastDrive then
-                if GetEntityRoutingBucket(entity) == 0 then
-                    entity.state:set('lastDrive', nil, false)
-                    deleteVehicle(vehicle)
-                else
-                    entity.state:set('lastDrive', osTime + config.second, false)
-                end
+                entity.state:set('lastDrive', nil, false)
+                deleteVehicle(vehicle)
             end
         end
         Wait(10000)
